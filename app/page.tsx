@@ -832,7 +832,7 @@ export default function Home() {
 
           <SectionTitle
             small="COURSES"
-            title="Learning &"
+            title="Learning &" 
             highlight="courses"
           />
 
