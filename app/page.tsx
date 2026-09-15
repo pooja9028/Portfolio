@@ -919,49 +919,74 @@ export default function Home() {
               </div>
             </div>
 
-            <form
-              className="rounded-2xl border border-white/10 bg-[#18191f] p-7"
-              onSubmit={(e) => e.preventDefault()}
-            >
+           <form
+  action="https://formsubmit.co/poojapadhar1992@gmail.com"
+  method="POST"
+  className="space-y-5"
+>
+  <input
+    type="hidden"
+    name="_subject"
+    value="New Portfolio Contact Message"
+  />
 
-              <div className="grid gap-5">
+  <input
+    type="hidden"
+    name="_template"
+    value="table"
+  />
 
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full rounded-lg border border-white/10 bg-[#121318] px-4 py-3 text-white outline-none transition placeholder:text-gray-600 focus:border-purple-600"
-                />
+  <input
+    type="hidden"
+    name="_captcha"
+    value="false"
+  />
 
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full rounded-lg border border-white/10 bg-[#121318] px-4 py-3 text-white outline-none transition placeholder:text-gray-600 focus:border-purple-600"
-                />
+  <input
+    type="hidden"
+    name="_next"
+    value="https://vercel.com/poojas-projects-baa8c577/portfolio"
+  />
 
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full rounded-lg border border-white/10 bg-[#121318] px-4 py-3 text-white outline-none transition placeholder:text-gray-600 focus:border-purple-600"
-                />
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+    className="w-full rounded-xl border border-white/10 bg-[#121318] px-5 py-4 text-white outline-none transition focus:border-purple-500"
+  />
 
-                <textarea
-                  rows={5}
-                  placeholder="Your Message"
-                  className="w-full resize-none rounded-lg border border-white/10 bg-[#121318] px-4 py-3 text-white outline-none transition placeholder:text-gray-600 focus:border-purple-600"
-                />
+  <input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    required
+    className="w-full rounded-xl border border-white/10 bg-[#121318] px-5 py-4 text-white outline-none transition focus:border-purple-500"
+  />
 
-                <button
-                  type="submit"
-                  className="flex items-center justify-center gap-2 rounded-lg bg-purple-600 px-6 py-3 font-medium transition hover:bg-purple-700"
-                >
-                  <Mail size={18} />
-                  Send Message
-                </button>
+  <input
+    type="text"
+    name="phone"
+    placeholder="Your Phone"
+    className="w-full rounded-xl border border-white/10 bg-[#121318] px-5 py-4 text-white outline-none transition focus:border-purple-500"
+  />
 
-              </div>
+  <textarea
+    name="message"
+    placeholder="Your Message"
+    rows={6}
+    required
+    className="w-full resize-none rounded-xl border border-white/10 bg-[#121318] px-5 py-4 text-white outline-none transition focus:border-purple-500"
+  />
 
-            </form>
-
+  <button
+    type="submit"
+    className="flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-6 py-4 text-lg font-medium text-white transition hover:bg-purple-500"
+  >
+    <Mail size={20} />
+    Send Message
+  </button>
+</form>
           </div>
         </div>
       </section>
