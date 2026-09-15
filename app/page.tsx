@@ -21,6 +21,8 @@ import {
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export default function Home() {
+
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const navItems = [
     "Home",
     "About",
@@ -919,9 +921,39 @@ export default function Home() {
               </div>
             </div>
 
-           <form
-  action="https://formsubmit.co/poojapadhar1992@gmail.com"
-  method="POST"
+          <form
+  onSubmit={async (e) => {
+    e.preventDefault();
+
+    setFormStatus("sending");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/poojapadhar1992@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setFormStatus("success");
+        form.reset();
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  }}
   className="space-y-5"
 >
   <input
@@ -934,18 +966,6 @@ export default function Home() {
     type="hidden"
     name="_template"
     value="table"
-  />
-
-  <input
-    type="hidden"
-    name="_captcha"
-    value="false"
-  />
-
-  <input
-    type="hidden"
-    name="_next"
-    value="https://vercel.com/poojas-projects-baa8c577/portfolio"
   />
 
   <input
@@ -981,11 +1001,27 @@ export default function Home() {
 
   <button
     type="submit"
-    className="flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-6 py-4 text-lg font-medium text-white transition hover:bg-purple-500"
+    disabled={formStatus === "sending"}
+    className="flex w-full items-center justify-center gap-2 rounded-xl bg-purple-600 px-6 py-4 text-lg font-medium text-white transition hover:bg-purple-500 disabled:cursor-not-allowed disabled:opacity-60"
   >
     <Mail size={20} />
-    Send Message
+
+    {formStatus === "sending"
+      ? "Sending..."
+      : "Send Message"}
   </button>
+
+  {formStatus === "success" && (
+    <div className="rounded-xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-center text-green-400">
+      ✓ Message sent successfully! I’ll get back to you soon.
+    </div>
+  )}
+
+  {formStatus === "error" && (
+    <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-center text-red-400">
+      ✕ Something went wrong. Please try again.
+    </div>
+  )}
 </form>
           </div>
         </div>
